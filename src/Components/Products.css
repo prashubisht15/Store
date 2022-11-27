@@ -1,3 +1,6 @@
 .card-media{
     width: 300px;
 }
+#add-btn{
+    font-weight:bold;
+}

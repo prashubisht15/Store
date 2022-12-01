@@ -1,3 +1,16 @@
+.product-component{
+    flex:3;
+    margin-right: 100px;
+    height: 100%;
+}
+.product-section{
+   overflow-y: scroll;
+}
+.search-bar{
+    margin: 30px auto;
+    justify-content: center;
+    width:40%;
+}
 .card-media{
     width: 300px;
 }

@@ -4,7 +4,6 @@ import Products from './Products'
 import Filter from './Filter'
 import axios from 'axios'
 import { useSnackbar } from "notistack";
-import SearchProduct from './SearchProduct'
 import './DashBoard.css'
 
 const DashBoard = () => {
@@ -18,8 +17,6 @@ const DashBoard = () => {
             console.log('res', response.data)
             setProdlist(response.data)
             // console.log('prod', prodlist)
-
-
             
         }
         catch (e) {
@@ -36,15 +33,16 @@ const DashBoard = () => {
     },[prodlist])
 
     return (
-        <div>
+        <div className='dashboard'>
             <Header />
             <div >
-                <div className='search-bar'>
-                    <SearchProduct/>
-                </div>
                 <div className='display'>
-                    <Filter />
-                    <Products prodlist={prodlist} />
+                    <div className='filter'>
+                        <Filter prodlist={prodlist}/>
+                    </div>
+                    <div className='product'>
+                        <Products prodlist={prodlist} />
+                    </div>
                 </div>
             </div>
         </div>

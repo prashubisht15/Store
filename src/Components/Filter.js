@@ -1,10 +1,10 @@
 import React from 'react'
-
+import { Box } from '@mui/system'
 const Filter = () => {
   return (
-    <div>
+    <Box className='filter-section'>
       filter
-    </div>
+    </Box>
   )
 }
 

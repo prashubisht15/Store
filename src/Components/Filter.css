@@ -1,3 +1,9 @@
 .filter-section{
-    flex:1;
+    margin-left:10%;
+    height:400px;
+}
+
+.category-list{
+    display: flex;
+    flex-direction: column;
 }

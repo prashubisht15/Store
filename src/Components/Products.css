@@ -1,10 +1,13 @@
 .product-component{
-    flex:3;
-    margin-right: 100px;
+    margin-right: 60px;
     height: 100%;
 }
 .product-section{
-   overflow-y: scroll;
+    height: 450px;
+    overflow-y: scroll;
+}
+.product-grid {
+    padding: 0.3rem 0.4rem 0rem 0.3rem;
 }
 .search-bar{
     margin: 30px auto;
@@ -14,6 +17,19 @@
 .card-media{
     width: 300px;
 }
+
+.product-call {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    /* background: red; */
+    margin-bottom: 0;
+}
+.product-price {
+    font-weight: bold;
+}
 #add-btn{
     font-weight:bold;
+    background: #000;
+    color: #fff;
 }

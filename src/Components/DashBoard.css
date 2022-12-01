@@ -1,15 +1,4 @@
 .dashboard{
     height: 100%;
 }
-.display{
-    display: flex;
-    justify-content: space-evenly;
-    height: 100%;
-}
-.filter{
-    flex:1;
-}
-.product
-{
-    flex:3; 
-}
+

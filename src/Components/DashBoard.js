@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import Header from './Header'
 import Products from './Products'
-import Filter from './Filter'
 import axios from 'axios'
 import { useSnackbar } from "notistack";
 import './DashBoard.css'

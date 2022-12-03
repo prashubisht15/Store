@@ -1,26 +1,6 @@
 import React,{useEffect, useState} from 'react'
 import './Filter.css'
-const Filter = ({prodlist}) => {
-  const [category, setCategory] = useState([])
-  const handleChange=(e)=>{
-    const value = e.target.value;
-    const checked = e.target.checked;
-    console.log(value, checked);
-    if(checked)
-    {
-      setCategory([
-        ...category,value
-      ])
-    }
-    else
-    {
-      setCategory(category.filter((e)=>(e!==value)))
-    }
-  }
-  useEffect(()=>{
-    setCategory(category)
-    console.log(category)
-  },[category])
+const Filter = ({handleChange}) => {
 
   return (
     <div className='filter-section'>
@@ -48,7 +28,7 @@ const Filter = ({prodlist}) => {
           </label>
         </div>
         
-        <h2>Price</h2>
+        {/* <h2>Price</h2>
         <div className='category-list'>
           <label>
             <input type="checkbox" name=""  value={250} onChange={handleChange} /> <span>0 - Rs250</span>
@@ -59,7 +39,7 @@ const Filter = ({prodlist}) => {
           <label>
             <input type="checkbox" name=""  value={'Men'} onChange={handleChange} /> <span>Above Rs450</span>
           </label>
-        </div>
+        </div> */}
 
         <h2>Type</h2>
         <div className='category-list'>

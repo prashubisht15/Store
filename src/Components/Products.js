@@ -1,4 +1,4 @@
-import React from 'react'
+import React,{useState} from 'react'
 import { Card, CardMedia, Typography, Button, CardContent, CardActions} from '@mui/material'
 import { Grid} from '@mui/material'
 import {InputAdornment, TextField, Box } from '@mui/material'
@@ -7,8 +7,7 @@ import Filter from './Filter'
 
 import './Products.css'
 
-const Products = ({ prodlist,value,changeInput }) => {
-
+const Products = ({ prodlist,value,handleChange,handleSearch,text}) => {    
     return (
         <Box container className='product-component'>
             <Box className='search-bar'>
@@ -26,13 +25,13 @@ const Products = ({ prodlist,value,changeInput }) => {
                     }}
                     placeholder="Search for items/categories"
                     name="search"
-                    value={value}
-                    onChange={changeInput}
+                    // value={text}
+                    onChange={(e)=>handleSearch(e)}
                 ></TextField>
             </Box>
             <Grid container spacing={1}>
                 <Grid className='product-section' item xs={12} md={3}>
-                    <Filter/>
+                    <Filter handleChange={handleChange}/>
                 </Grid>
                 <Grid className='product-section'
                     item
@@ -46,7 +45,7 @@ const Products = ({ prodlist,value,changeInput }) => {
                         prodlist ? (
                             prodlist.map((ele) => (
                                 <Grid item sm={4} xs={12} key={ele.id}>
-                                    <Card className="product-grid" sx={{ maxWidth: 400 }}>
+                                    <Card className="product-grid" sx={{ maxWidth: 350 }}>
                                     
                                         <Typography gutterBottom variant="h6" component="div">
                                             {ele.name}
@@ -54,9 +53,8 @@ const Products = ({ prodlist,value,changeInput }) => {
                                         
                                         <CardMedia
                                             component="img"
-                                            height="200"
+                                            height="300"
                                             image={ele.imageURL}
-                                        // className="card-media"
                                         />
                                         <Box display="flex" className="product-call">
                                             <CardContent>

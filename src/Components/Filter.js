@@ -65,7 +65,7 @@ const Filter = ({handleChange}) => {
             <input type="checkbox" name="type"  value={'polo'} onChange={handleChange} /> <span>Polo</span>
           </label>
           <label>
-            <input type="checkbox" name="type"  value={'hoodies'} onChange={handleChange} /> <span>Hoodie</span>
+            <input type="checkbox" name="type"  value={'hoodie'} onChange={handleChange} /> <span>Hoodie</span>
           </label>
           <label>
             <input type="checkbox" name="type"  value={'basic'} onChange={handleChange} /> <span>Basic</span>

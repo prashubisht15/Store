@@ -1,14 +1,16 @@
 import React, { useState } from 'react'
 import { Card, CardMedia, Typography, Button, CardContent, CardActions } from '@mui/material'
 import { Grid } from '@mui/material'
-import { InputAdornment, TextField, Box } from '@mui/material'
+import { TextField, Box } from '@mui/material'
+import { useSnackbar } from "notistack";
 import { Search } from '@mui/icons-material'
 import Filter from './Filter'
 
 import './Products.css'
 
-const Products = ({ filteredList, value, handleChange, handleSearch, handleText }) => {
+const Products = ({ filteredList, handleChange, handleSearch, handleText, handleAddToCart}) => {
     const [text, setText] = useState('')
+    const { enqueueSnackbar } = useSnackbar();
     const handleTextChange = (e) => {
         setText(e.target.value)
         if (e.target.value === '')
@@ -17,7 +19,7 @@ const Products = ({ filteredList, value, handleChange, handleSearch, handleText 
     const handleClick = () => {
         handleSearch(text);
     }
-
+   
     return (
         <Box container className='product-component'>
             <Box className='search-bar'>
@@ -66,7 +68,7 @@ const Products = ({ filteredList, value, handleChange, handleSearch, handleText 
                                                 </Typography>
                                             </CardContent>
                                             <CardActions>
-                                                <Button size="Large" id="add-btn" >Add to Cart</Button>
+                                                <Button size="Large" id="add-btn" onClick={()=>handleAddToCart(ele,ele.id)}>Add to Cart</Button>
                                             </CardActions>
                                         </Box>
 

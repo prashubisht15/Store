@@ -5,10 +5,11 @@ import axios from 'axios'
 import { useSnackbar } from "notistack";
 import './DashBoard.css'
 
-const DashBoard = () => {
+const DashBoard = ({setCart1}) => {
 
     const [prodlist, setProdlist] = useState([])
-    const { enquequeSnackbar } = useSnackbar();
+    const [cart, setCart] = useState([]);
+    const { enqueueSnackbar } = useSnackbar();
     const [filteredData, setFilteredData] = useState([])
     const [checklist, setChecklist] = useState({
         color: [],
@@ -20,11 +21,12 @@ const DashBoard = () => {
         const url = 'https://geektrust.s3.ap-southeast-1.amazonaws.com/coding-problems/shopping-cart/catalogue.json'
         try {
             const response = await axios.get(url)
+            response.data = response.data.map((ele)=> ({...ele, included : 0}))
             setProdlist(response.data)
             setFilteredData(response.data)
         }
         catch (e) {
-            enquequeSnackbar(e.response.statusText, { variant: "error" });
+            enqueueSnackbar(e.response.statusText, { variant: "error" });
             console.log(e)
         }
     }
@@ -48,13 +50,12 @@ const DashBoard = () => {
 
     const handleChange = (e) => {
         const { name, value, checked } = e.target
+        const valueArray = checklist[name]
         if (checked) {
-            const valueArray = checklist[name]
             valueArray.push(value)
             setChecklist({ ...checklist, [name]: valueArray })
         }
         else {
-            const valueArray = checklist[name]
             const newfilteredArray = valueArray.filter((e) => e !== value)
             setChecklist({ ...checklist, [name]: newfilteredArray })
         }
@@ -81,6 +82,29 @@ const DashBoard = () => {
         setFilteredData(ultimateFilter)
     }
 
+    const isIteminCart=(cart,id)=>{
+        if(cart)
+        {
+            return cart.findIndex((e)=>e.id===id) !==-1
+        }
+    }
+    const handleAddToCart= (cartItem,cartItemId)=>{
+        if(cartItem.quantity===0)
+        {
+            enqueueSnackbar("Item out of Stock", {variant:"warning"});
+            return
+        }    
+        if(isIteminCart(cart,cartItemId))
+            enqueueSnackbar("Already Added in cart", {variant:"warning"});
+        else{
+            console.log('cartItem', cartItem)
+            enqueueSnackbar("Item added in cart", {variant:"success"});
+            setCart([...cart,cartItem])
+        }    
+        
+    }
+    console.log('cart-items', cart)
+
     useEffect(() => {
         performApiCall();
     }, [])
@@ -89,11 +113,20 @@ const DashBoard = () => {
         filterFunction()
     }, [checklist])
 
+    useEffect(()=>{
+        setCart1(cart)
+    },[cart])
+
     return (
         <div className='dashboard'>
-            <Header />
+            <Header/>
             <div >
-                <Products filteredList={filteredData} handleChange={handleChange} handleSearch={handleSearch} handleText={handleText} />
+                <Products 
+                filteredList={filteredData}
+                    handleChange={handleChange}
+                        handleSearch={handleSearch}
+                            handleText={handleText}
+                            handleAddToCart={handleAddToCart} />
             </div>
         </div>
     )

@@ -3,8 +3,10 @@ import './Cart.css'
 import { Scrollbars } from 'react-custom-scrollbars-2';
 import Items from './Items';
 
-const Cart = (prodlist)=>{
-    const [item, setItem] = useState(prodlist);
+
+const Cart = ({cart1})=>{
+    console.log('cart page',cart1)
+    
     return(
         <>
            <section className="main-cart-section">
@@ -14,8 +16,9 @@ const Cart = (prodlist)=>{
                 <div className='cart-items-container'>
                     <Scrollbars>
                         {
-                            item.map((curItem)=>{
-                                return <Items key={curItem.id} {...curItem}/>
+                            cart1.map((curItem)=>{
+                                    console.log('curITm',curItem)
+                                return <Items key={curItem.id} itemObj={curItem} qty={}/>
                             })
                         }
                     </Scrollbars>
@@ -25,3 +28,4 @@ const Cart = (prodlist)=>{
         </>
     )
 }
+export default Cart

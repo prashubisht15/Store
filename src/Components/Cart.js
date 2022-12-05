@@ -2,11 +2,11 @@ import React from 'react'
 import './Cart.css'
 import { Scrollbars } from 'react-custom-scrollbars-2';
 import Items from './Items';
-
+import { useState } from 'react';
 
 const Cart = ({cart1})=>{
     console.log('cart page',cart1)
-    
+    const [qty,setQty] = useState(1)
     return(
         <>
            <section className="main-cart-section">
@@ -18,7 +18,7 @@ const Cart = ({cart1})=>{
                         {
                             cart1.map((curItem)=>{
                                     console.log('curITm',curItem)
-                                return <Items key={curItem.id} itemObj={curItem} qty={}/>
+                                return <Items key={curItem.id} itemObj={curItem}/>
                             })
                         }
                     </Scrollbars>

@@ -18,6 +18,7 @@ img{
     width: 300px;
 }
 .search-bar{
+    display: flex;
     margin: 30px auto;
     justify-content: center;
     width:40%;

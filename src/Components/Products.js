@@ -1,13 +1,23 @@
-import React,{useState} from 'react'
-import { Card, CardMedia, Typography, Button, CardContent, CardActions} from '@mui/material'
-import { Grid} from '@mui/material'
-import {InputAdornment, TextField, Box } from '@mui/material'
-import {Search} from '@mui/icons-material'
+import React, { useState } from 'react'
+import { Card, CardMedia, Typography, Button, CardContent, CardActions } from '@mui/material'
+import { Grid } from '@mui/material'
+import { InputAdornment, TextField, Box } from '@mui/material'
+import { Search } from '@mui/icons-material'
 import Filter from './Filter'
 
 import './Products.css'
 
-const Products = ({ prodlist,value,handleChange,handleSearch,text}) => {    
+const Products = ({ filteredList, value, handleChange, handleSearch, handleText }) => {
+    const [text, setText] = useState('')
+    const handleTextChange = (e) => {
+        setText(e.target.value)
+        if (e.target.value === '')
+            handleText()
+    }
+    const handleClick = () => {
+        handleSearch(text);
+    }
+
     return (
         <Box container className='product-component'>
             <Box className='search-bar'>
@@ -16,22 +26,15 @@ const Products = ({ prodlist,value,handleChange,handleSearch,text}) => {
                     size="small"
                     type="text"
                     fullWidth
-                    InputProps={{
-                        endAdornment: (
-                            <InputAdornment position="end">
-                                <Search color="primary" />
-                            </InputAdornment>
-                        ),
-                    }}
                     placeholder="Search for items/categories"
                     name="search"
-                    // value={text}
-                    onChange={(e)=>handleSearch(e)}
+                    onChange={(e) => handleTextChange(e)}
                 ></TextField>
+                <button onClick={handleClick}><Search /></button>
             </Box>
             <Grid container spacing={1}>
                 <Grid className='product-section' item xs={12} md={3}>
-                    <Filter handleChange={handleChange}/>
+                    <Filter handleChange={handleChange} />
                 </Grid>
                 <Grid className='product-section'
                     item
@@ -40,17 +43,17 @@ const Products = ({ prodlist,value,handleChange,handleSearch,text}) => {
                     container spacing={4}
                     justifyContent="center"
                     alignItems="center"
-                    >
+                >
                     {
-                        prodlist ? (
-                            prodlist.map((ele) => (
+                        filteredList ? (
+                            filteredList.map((ele) => (
                                 <Grid item sm={4} xs={12} key={ele.id}>
                                     <Card className="product-grid" sx={{ maxWidth: 350 }}>
-                                    
+
                                         <Typography gutterBottom variant="h6" component="div">
                                             {ele.name}
                                         </Typography>
-                                        
+
                                         <CardMedia
                                             component="img"
                                             height="300"

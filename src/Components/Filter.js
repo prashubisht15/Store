@@ -8,23 +8,41 @@ const Filter = ({handleChange}) => {
         <h2>Color</h2>
         <div className='category-list'>
           <label>
-            <input type="checkbox" name=""  value={'Red'} onChange={handleChange}/> <span>Red</span>
+            <input type="checkbox" name="color" value={'red'} onChange={handleChange}/> <span>Red</span>
           </label>
           <label>
-            <input type="checkbox" name=""  value={'Blue'} onChange={handleChange} /> <span>Blue</span>
+            <input type="checkbox" name="color"  value={'blue'} onChange={handleChange} /> <span>Blue</span>
           </label>
           <label>
-            <input type="checkbox" name=""  value={'Green'} onChange={handleChange} /> <span>Green</span>
+            <input type="checkbox" name="color"  value={'green'} onChange={handleChange} /> <span>Green</span>
+          </label>
+          <label>
+            <input type="checkbox" name="color"  value={'grey'} onChange={handleChange} /> <span>Grey</span>
+          </label>
+          <label>
+            <input type="checkbox" name="color"  value={'white'} onChange={handleChange} /> <span>White</span>
+          </label>
+          <label>
+            <input type="checkbox" name="color"  value={'black'} onChange={handleChange} /> <span>Black</span>
+          </label>
+          <label>
+            <input type="checkbox" name="color"  value={'pink'} onChange={handleChange} /> <span>Pink</span>
+          </label>
+          <label>
+            <input type="checkbox" name="color"  value={'purple'} onChange={handleChange} /> <span>Purple</span>
+          </label>
+          <label>
+            <input type="checkbox" name="color"  value={'yellow'} onChange={handleChange} /> <span>Yellow</span>
           </label>
         </div>
 
         <h2>Gender</h2>
         <div className='category-list'>
           <label>
-            <input type="checkbox" name=""  value={'Men'} onChange={handleChange} /> <span>Men</span>
+            <input type="checkbox" name="gender"  value={'men'} onChange={handleChange} /> <span>Men</span>
           </label>
           <label>
-            <input type="checkbox" name=""  value={'Women'} onChange={handleChange} /> <span>Women</span>
+            <input type="checkbox" name="gender"  value={'women'} onChange={handleChange} /> <span>Women</span>
           </label>
         </div>
         
@@ -44,13 +62,13 @@ const Filter = ({handleChange}) => {
         <h2>Type</h2>
         <div className='category-list'>
           <label>
-            <input type="checkbox" name=""  value={'Polo'} onChange={handleChange} /> <span>Polo</span>
+            <input type="checkbox" name="type"  value={'polo'} onChange={handleChange} /> <span>Polo</span>
           </label>
           <label>
-            <input type="checkbox" name=""  value={'Hoodies'} onChange={handleChange} /> <span>Hoodie</span>
+            <input type="checkbox" name="type"  value={'hoodies'} onChange={handleChange} /> <span>Hoodie</span>
           </label>
           <label>
-            <input type="checkbox" name=""  value={'Basic'} onChange={handleChange} /> <span>Basic</span>
+            <input type="checkbox" name="type"  value={'basic'} onChange={handleChange} /> <span>Basic</span>
           </label>
         </div>
       </form>

@@ -5,7 +5,7 @@ const Filter = ({handleChange}) => {
   return (
     <div className='filter-section'>
       <form>
-        <h2>Color</h2>
+        <h3>Color</h3>
         <div className='category-list'>
           <label>
             <input type="checkbox" name="color" value={'red'} onChange={handleChange}/> <span>Red</span>
@@ -36,7 +36,7 @@ const Filter = ({handleChange}) => {
           </label>
         </div>
 
-        <h2>Gender</h2>
+        <h4>Gender</h4>
         <div className='category-list'>
           <label>
             <input type="checkbox" name="gender"  value={'men'} onChange={handleChange} /> <span>Men</span>
@@ -46,7 +46,7 @@ const Filter = ({handleChange}) => {
           </label>
         </div>
         
-        {/* <h2>Price</h2>
+        {/* <h4>Price</h4>
         <div className='category-list'>
           <label>
             <input type="checkbox" name=""  value={250} onChange={handleChange} /> <span>0 - Rs250</span>
@@ -59,7 +59,7 @@ const Filter = ({handleChange}) => {
           </label>
         </div> */}
 
-        <h2>Type</h2>
+        <h4>Type</h4>
         <div className='category-list'>
           <label>
             <input type="checkbox" name="type"  value={'polo'} onChange={handleChange} /> <span>Polo</span>

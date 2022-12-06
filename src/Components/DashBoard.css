@@ -1,4 +1,11 @@
+html {
+    font-size: 80%;
+  }
 .dashboard{
-    height: 100%;
+    background-color: rgba(240, 238, 238, 0.938);
 }
-
+body {
+  width: 95%;
+  height: 100vh;
+  margin: auto;
+}

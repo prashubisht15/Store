@@ -15,9 +15,9 @@ const Header = () => {
   }
   return (
     <header className='header'>
-      <span id='logo'>
-        TeeRex Store
-      </span>
+      <div id='logo'>
+        <h2>TeeRex Store</h2>
+      </div>
       <Button
             color="primary"
             variant="contained"
@@ -26,6 +26,7 @@ const Header = () => {
             onClick={() => {routeChange()}
           }
         >
+          Cart
       </Button>
       {/* <span id='cart-icon'>
         cart Icon

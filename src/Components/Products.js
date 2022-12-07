@@ -1,20 +1,12 @@
 import React, { useState } from "react";
-import {
-  Card,
-  CardMedia,
-  Typography,
-  Button,
-  CardContent,
-  CardActions,
-} from "@mui/material";
+import { Card, CardMedia, Typography, Button } from "@mui/material";
 import { Grid } from "@mui/material";
 import { TextField, Box } from "@mui/material";
-import { useSnackbar } from "notistack";
 import { Search } from "@mui/icons-material";
 import Filter from "./Filter";
-import { Scrollbars } from "react-custom-scrollbars-2";
-
 import "./Products.css";
+import FilterAltIcon from "@mui/icons-material/FilterAlt";
+import { useEffect } from "react";
 
 const Products = ({
   filteredList,
@@ -24,7 +16,12 @@ const Products = ({
   handleAddToCart,
 }) => {
   const [text, setText] = useState("");
-  const { enqueueSnackbar } = useSnackbar();
+  const [toggle1, setToggle1] = useState(true);
+  const [toggle2, setToggle2] = useState(true)
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth)
+  const detectSize=()=>{
+    setWindowWidth(window.innerWidth)
+  }
   const handleTextChange = (e) => {
     setText(e.target.value);
     if (e.target.value === "") handleText();
@@ -32,6 +29,25 @@ const Products = ({
   const handleClick = () => {
     handleSearch(text);
   };
+  const handleToggle = () => {
+    setToggle1(!toggle1);
+    setToggle2(!toggle2)
+  };
+  useEffect(()=>{
+    window.addEventListener('resize',detectSize)
+    if(windowWidth<=900)
+    {
+      setToggle1(false)
+      setToggle2(true)
+    }
+    if(windowWidth>900){
+      setToggle1(true)
+      setToggle2(true)
+    }
+    return()=>{
+      window.removeEventListener('resize',detectSize)
+    }
+  },[windowWidth])
 
   return (
     <Box container className="product-component">
@@ -48,13 +64,15 @@ const Products = ({
         <button onClick={handleClick}>
           <Search />
         </button>
+        <button className='filter-button' onClick={handleToggle}>
+          <FilterAltIcon />
+        </button>
       </Box>
       <Grid container spacing={2}>
-        <Grid className="product-section" item xs={12} md={3}>
+        {toggle1 && <Grid className="product-section filter-grid" item xs={12} md={3} >
           <Filter handleChange={handleChange} />
-        </Grid>
-        {/* <Scrollbars> */}
-        <Grid
+        </Grid>}
+        {toggle2 && <Grid
           className="product-section products-collection"
           item
           xs={12}
@@ -64,9 +82,9 @@ const Products = ({
           justifyContent="center"
           alignItems="center"
         >
-          {filteredList ? (
+          {filteredList && filteredList.length ? (
             filteredList.map((ele) => (
-              <Grid item sm={4} xs={12} key={ele.id}>
+              <Grid item sm={4} md={4} xs={12} key={ele.id}>
                 <Card className="product-grid">
                   <Typography gutterBottom variant="h6" component="div">
                     {ele.name}
@@ -93,9 +111,11 @@ const Products = ({
               </Grid>
             ))
           ) : (
-            <div>No Products</div>
+            <div className="no-product">
+              <h1>No Such Products</h1>
+            </div>
           )}
-        </Grid>
+        </Grid>}
         {/* </Scrollbars> */}
       </Grid>
     </Box>

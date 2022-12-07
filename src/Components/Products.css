@@ -23,14 +23,15 @@ img{
     margin-bottom: 40px;
     justify-content: center;
     width:40%;
-    border:.5px #000 solid;
-    border-radius: 5px;
+    
 }
 .card-media{
     width: 100%;
     height: 100%;
 }
-
+.filter-button{
+    display: none;
+}
 .product-call {
     display: flex;
     justify-content: space-evenly;
@@ -48,3 +49,19 @@ img{
 .product-section::-webkit-scrollbar {
     display: none;
   }
+.no-product{
+    font-size: 2rem;
+}
+
+@media screen and (max-width: 900px){
+
+    .filter-button{
+        display: block;
+    }
+    .search-bar{
+        width: 80%;
+    }
+    .filter-grid{
+        font-size: medium;
+    }
+}

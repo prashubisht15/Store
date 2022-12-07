@@ -6,6 +6,7 @@ import { useSnackbar } from "notistack";
 import "./DashBoard.css";
 
 const DashBoard = ({ setCart1 }) => {
+
   const [prodlist, setProdlist] = useState([]);
   const [cart, setCart] = useState([]);
   const { enqueueSnackbar } = useSnackbar();
@@ -41,6 +42,7 @@ const DashBoard = ({ setCart1 }) => {
         product.type.toLowerCase().includes(text.toLowerCase())
     );
     setFilteredData(ultimateFilter);
+    
   };
 
   const handleChange = (e) => {

@@ -14,6 +14,8 @@ const Products = ({
   handleSearch,
   handleText,
   handleAddToCart,
+  setPriceValue,
+  priceValue
 }) => {
   const [text, setText] = useState("");
   const [toggle1, setToggle1] = useState(true);
@@ -35,12 +37,12 @@ const Products = ({
   };
   useEffect(()=>{
     window.addEventListener('resize',detectSize)
-    if(windowWidth<=900)
+    if(windowWidth<=768)
     {
       setToggle1(false)
       setToggle2(true)
     }
-    if(windowWidth>900){
+    if(windowWidth>768){
       setToggle1(true)
       setToggle2(true)
     }
@@ -70,7 +72,7 @@ const Products = ({
       </Box>
       <Grid container spacing={2}>
         {toggle1 && <Grid className="product-section filter-grid" item xs={12} md={3} >
-          <Filter handleChange={handleChange} />
+          <Filter handleChange={handleChange} setPriceValue={setPriceValue} priceValue={priceValue}/>
         </Grid>}
         {toggle2 && <Grid
           className="product-section products-collection"

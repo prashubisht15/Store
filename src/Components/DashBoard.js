@@ -9,6 +9,7 @@ const DashBoard = ({ setCart1 }) => {
 
   const [prodlist, setProdlist] = useState([]);
   const [cart, setCart] = useState([]);
+  const [priceValue, setPriceValue] = useState(50);
   const { enqueueSnackbar } = useSnackbar();
   const [filteredData, setFilteredData] = useState([]);
   const [checklist, setChecklist] = useState({
@@ -55,10 +56,18 @@ const DashBoard = ({ setCart1 }) => {
       const newfilteredArray = valueArray.filter((e) => e !== value);
       setChecklist({ ...checklist, [name]: newfilteredArray });
     }
+    console.log(checklist)
   };
 
   const filterFunction = () => {
+    
     let ultimateFilter = [...prodlist];
+    if(priceValue>=250)
+    { 
+      ultimateFilter = ultimateFilter.filter((ele)=>{
+      return ele.price<=priceValue;
+      })
+    }
     if (checklist.color.length > 0) {
       ultimateFilter = ultimateFilter.filter((ele) => {
         return checklist.color.includes(ele.color.toLowerCase());
@@ -101,7 +110,7 @@ const DashBoard = ({ setCart1 }) => {
 
   useEffect(() => {
     filterFunction();
-  }, [checklist]);
+  }, [checklist,priceValue]);
 
   useEffect(() => {
     setCart1(cart);
@@ -117,6 +126,8 @@ const DashBoard = ({ setCart1 }) => {
           handleSearch={handleSearch}
           handleText={handleText}
           handleAddToCart={handleAddToCart}
+          setPriceValue={setPriceValue}
+          priceValue={priceValue}
         />
       </div>
     </div>

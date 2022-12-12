@@ -1,6 +1,4 @@
 .product-component{
-    /* margin-left: 25px;
-    margin-right: 25px; */
     height: 100%;
 }
 img{
@@ -53,7 +51,7 @@ img{
     font-size: 2rem;
 }
 
-@media screen and (max-width: 900px){
+@media screen and (max-width: 768px){
 
     .filter-button{
         display: block;

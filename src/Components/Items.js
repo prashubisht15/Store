@@ -4,7 +4,7 @@ import "./Cart.css";
 
 const Items = ({ itemObj, setIncrement, setDecrement, handleDelete }) => {
   const [qty, setQty] = useState(1);
-  const [total, setTotal] = useState(qty * itemObj.price);
+  const [total, setTotal] = useState(1 * itemObj.price);
   console.log("afasdfasdfasdfasfd", total);
   const { enqueueSnackbar } = useSnackbar();
   const handleAdd = () => {
@@ -24,12 +24,16 @@ const Items = ({ itemObj, setIncrement, setDecrement, handleDelete }) => {
     }
   };
 
-  // useEffect(()=>{
-  //     setIncrement(total)
-  // },[handleAdd])
-  // useEffect(()=>{
-  //     setIncrement(total)
-  // },[handleMinus])
+
+  useEffect(()=>{
+    setTotal(qty*itemObj.price)
+  },[qty])
+  useEffect(()=>{
+      setIncrement(total)
+  },[total])
+  useEffect(()=>{
+      setDecrement(total)
+  },[total])
 
   console.log("item itemObj", itemObj);
   return (

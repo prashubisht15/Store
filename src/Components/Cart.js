@@ -9,6 +9,7 @@ const Cart = ({ cart1 }) => {
   let total = displayCart
     .map((e) => e.price)
     .reduce((prev, curr) => prev + curr, 0);
+
   const [cartTotal, setCartTotal] = useState(total);
   const [decrement, setDecrement] = useState(0);
   const [increment, setIncrement] = useState(0);
